@@ -1,18 +1,17 @@
-Attribute VB_Name = "ì’u‚«ê0"
+Attribute VB_Name = "è©¦ä½œç½®ãå ´0"
 Sub FileCreate()
-' ƒeƒLƒXƒg‚ğs‚Å“Ç‚İ‚ñ‚ÅƒtƒHƒ‹ƒ_¶¬‚ğ©“®‚Ås‚¤B
-Dim filepath As String
+' ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡Œã§èª­ã¿è¾¼ã‚“ã§ãƒ•ã‚©ãƒ«ãƒ€ç”Ÿæˆã‚’è‡ªå‹•ã§è¡Œã†ã€‚
+Dim Filepath As String
 Dim fbo, aan As Object
 Set fbo = CreateObject("Scripting.FileSystemObject")
-Dim projectname As String
+Dim Pname As String 'Projectname
 
-projectname = "to"
+Pname = "ãŠãŸã‚ã—"
 
-filepath = "C:\Users\" + Environ("Username") + "\Desktop\" & projectname
-Debug.Print filepath
+Filepath = DesktopFilepath(Filepath) & Pname
+Debug.Print Filepath
 
-
-filepath = fbo.createfolder(filepath)
+Filepath = fbo.createfolder(Filepath)
 
 Dim starray() As String
 Dim str As String
@@ -21,13 +20,14 @@ str = "ant,bear,logn"
 
 starray = Split(str, ",")
 
-Dim char As String
-
-char = ".md"
-
 For i = 0 To UBound(starray)
-    Set aan = fbo.createtextfile(filepath & "\" & starray(i) & char)
-
+    Set aan = fbo.createtextfile(Filepath & "\" & starray(i) & ".md")
 Next i
 
 End Sub
+
+Function DesktopFilepath(Filepath) As String
+
+    DesktopFilepath = "C:\Users\" + Environ("Username") + "\Desktop\"
+
+End Function
